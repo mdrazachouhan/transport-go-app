@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior:smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APP_NAME_PLACEHOLDER - Goods Transport Booking</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0A1628;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+header{padding:20px 0;position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,22,40,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;max-width:960px;margin:0 auto;padding:0 24px}
+.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:700}
+.logo svg{width:32px;height:32px}
+.admin-link{font-size:14px;color:#00C9A7;border:1px solid #00C9A7;padding:6px 16px;border-radius:8px;transition:all 0.3s}
+.admin-link:hover{background:#00C9A7;color:#0A1628}
+.hero{padding:140px 0 80px;text-align:center}
+.hero-badge{display:inline-block;background:rgba(27,110,243,0.15);color:#1B6EF3;font-size:13px;font-weight:600;padding:6px 16px;border-radius:20px;margin-bottom:24px;border:1px solid rgba(27,110,243,0.3)}
+.hero h1{font-size:48px;font-weight:800;line-height:1.1;margin-bottom:16px;background:linear-gradient(135deg,#fff 0%,#00C9A7 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:18px;color:rgba(255,255,255,0.7);max-width:500px;margin:0 auto 40px}
+.cta-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#1B6EF3,#0050D0);color:#fff;font-size:16px;font-weight:600;padding:14px 32px;border-radius:12px;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 24px rgba(27,110,243,0.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 32px rgba(27,110,243,0.5)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);color:#fff;font-size:16px;font-weight:600;padding:14px 32px;border-radius:12px;border:1px solid rgba(255,255,255,0.12);transition:all 0.2s}
+.btn-secondary:hover{background:rgba(255,255,255,0.14)}
+.features{padding:60px 0 80px}
+.section-title{text-align:center;font-size:32px;font-weight:700;margin-bottom:12px}
+.section-sub{text-align:center;color:rgba(255,255,255,0.6);font-size:16px;margin-bottom:48px}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feature-card{background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:32px 24px;text-align:center;transition:transform 0.3s,border-color 0.3s}
+.feature-card:hover{transform:translateY(-4px);border-color:rgba(0,201,167,0.3)}
+.feature-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.feature-icon.blue{background:rgba(27,110,243,0.15)}
+.feature-icon.teal{background:rgba(0,201,167,0.15)}
+.feature-icon.purple{background:rgba(139,92,246,0.15)}
+.feature-icon svg{width:28px;height:28px}
+.feature-card h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.feature-card p{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.5}
+.qr-section{padding:60px 0 80px}
+.qr-card{background:linear-gradient(145deg,rgba(27,110,243,0.1),rgba(0,201,167,0.05));border:1px solid rgba(27,110,243,0.2);border-radius:20px;padding:48px;display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.qr-text h2{font-size:28px;font-weight:700;margin-bottom:12px}
+.qr-text p{color:rgba(255,255,255,0.6);font-size:15px;max-width:360px;margin-bottom:20px}
+.qr-text .expo-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);padding:8px 16px;border-radius:8px;font-size:13px;color:rgba(255,255,255,0.8)}
+.qr-placeholder{width:180px;height:180px;background:rgba(255,255,255,0.95);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#0A1628}
+.qr-placeholder svg{width:80px;height:80px;opacity:0.3}
+.qr-placeholder span{font-size:12px;font-weight:600;opacity:0.5;text-align:center;padding:0 16px}
+footer{padding:32px 0;border-top:1px solid rgba(255,255,255,0.06);text-align:center}
+footer p{font-size:13px;color:rgba(255,255,255,0.4)}
+html{scroll-behavior:smooth}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes glow-pulse{0%,100%{border-color:rgba(27,110,243,0.3);box-shadow:0 0 20px rgba(27,110,243,0.1)}50%{border-color:rgba(0,201,167,0.4);box-shadow:0 0 30px rgba(0,201,167,0.15)}}
+
+.hero-badge,.hero h1,.hero p,.cta-group{opacity:0;animation:fadeInUp 0.8s ease forwards}
+.hero-badge{animation-delay:0s}
+.hero h1{animation-delay:0.2s}
+.hero p{animation-delay:0.4s}
+.cta-group{animation-delay:0.6s}
+
+.hero{position:relative;overflow:hidden}
+.hero::before,.hero::after{content:'';position:absolute;border-radius:50%;background:rgba(27,110,243,0.15);pointer-events:none;animation:float 6s ease-in-out infinite}
+.hero::before{width:8px;height:8px;top:30%;left:15%;animation-duration:5s}
+.hero::after{width:6px;height:6px;top:50%;right:20%;animation-duration:7s;animation-delay:1s}
+.hero .container::before,.hero .container::after{content:'';position:absolute;border-radius:50%;pointer-events:none;animation:float ease-in-out infinite}
+.hero .container::before{width:5px;height:5px;background:rgba(0,201,167,0.2);top:25%;right:10%;animation-duration:8s;animation-delay:2s}
+.hero .container::after{width:10px;height:10px;background:rgba(139,92,246,0.12);bottom:20%;left:10%;animation-duration:6s;animation-delay:0.5s}
+.hero .container{position:relative}
+
+.feature-card,.section-title,.section-sub{opacity:0;transform:translateY(40px);transition:opacity 0.6s ease,transform 0.6s ease}
+.feature-card:nth-child(1){transition-delay:0s}
+.feature-card:nth-child(2){transition-delay:0.15s}
+.feature-card:nth-child(3){transition-delay:0.3s}
+.animate-in{opacity:1!important;transform:translateY(0)!important}
+
+.btn-primary{position:relative;overflow:hidden;background:linear-gradient(135deg,#1B6EF3,#0050D0);background-size:100% 100%}
+.btn-primary::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.2) 50%,transparent 100%);background-size:200% 100%;animation:shimmer 3s ease-in-out infinite;pointer-events:none}
+
+header{transition:background 0.4s ease,box-shadow 0.4s ease}
+header.scrolled{background:rgba(10,22,40,0.98);box-shadow:0 4px 30px rgba(0,0,0,0.3);border-bottom-color:rgba(27,110,243,0.15)}
+
+.qr-card{animation:glow-pulse 4s ease-in-out infinite}
+
+.feature-card:hover{transform:translateY(-6px) scale(1.02)!important;border-color:rgba(0,201,167,0.4);box-shadow:0 8px 32px rgba(0,201,167,0.1)}
+.btn-primary:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 8px 36px rgba(27,110,243,0.5)}
+.btn-secondary:hover{background:rgba(255,255,255,0.14);transform:translateY(-2px) scale(1.02)}
+.admin-link:hover{transform:scale(1.05)}
+
+@media(max-width:768px){
+.hero h1{font-size:32px}
+.hero p{font-size:16px}
+.features-grid{grid-template-columns:1fr}
+.qr-card{flex-direction:column;text-align:center;padding:32px 24px}
+.qr-text p{margin:0 auto 20px}
+.cta-group{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="header-inner">
+<div class="logo">
+<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="32" height="32" rx="8" fill="#1B6EF3"/>
+<path d="M6 20h2v2H6v-2zm16 0h2v2h-2v-2z" fill="#fff"/>
+<path d="M4 14l2-6h12v6H4zm14-6h4l4 6h-8V8z" fill="#fff" fill-opacity="0.9"/>
+<path d="M3 14h23v4H3v-4z" fill="#fff"/>
+<circle cx="8" cy="21" r="2.5" fill="#0A1628" stroke="#fff" stroke-width="1.5"/>
+<circle cx="22" cy="21" r="2.5" fill="#0A1628" stroke="#fff" stroke-width="1.5"/>
+</svg>
+APP_NAME_PLACEHOLDER
+</div>
+<a href="/admin" class="admin-link">Admin Panel</a>
+</div>
+</header>
+
+<section class="hero">
+<div class="container">
+<div class="hero-badge">Goods Transport in Indore</div>
+<h1>APP_NAME_PLACEHOLDER</h1>
+<p>Fast &amp; reliable goods transport - Book Auto, Tempo, or Truck in Indore</p>
+<div class="cta-group">
+<a href="exp://EXPS_URL_PLACEHOLDER" class="btn-primary">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+Open App
+</a>
+<a href="#qr" class="btn-secondary">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+Scan QR Code
+</a>
+</div>
+</div>
+</section>
+
+<section class="features">
+<div class="container">
+<h2 class="section-title">Why APP_NAME_PLACEHOLDER?</h2>
+<p class="section-sub">Everything you need for reliable goods transport</p>
+<div class="features-grid">
+<div class="feature-card">
+<div class="feature-icon blue">
+<svg viewBox="0 0 24 24" fill="none" stroke="#1B6EF3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+</div>
+<h3>Real-time Tracking</h3>
+<p>Track your goods in real-time from pickup to delivery with live GPS updates and status notifications.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon teal">
+<svg viewBox="0 0 24 24" fill="none" stroke="#00C9A7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+</div>
+<h3>Multiple Vehicle Types</h3>
+<p>Choose from Auto, Tempo, or Truck based on your cargo size. Flexible options for every transport need.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon purple">
+<svg viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+</div>
+<h3>Safe &amp; Secure</h3>
+<p>Verified drivers, OTP-based delivery confirmation, and end-to-end security for your valuable goods.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="qr-section" id="qr">
+<div class="container">
+<div class="qr-card">
+<div class="qr-text">
+<h2>Get Started Now</h2>
+<p>Scan the QR code with your phone camera or Expo Go app to start booking transport instantly.</p>
+<div class="expo-badge">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+Open with Expo Go
+</div>
+</div>
+<div class="qr-placeholder">
+<svg viewBox="0 0 100 100" fill="#0A1628"><rect x="10" y="10" width="25" height="25" rx="3"/><rect x="65" y="10" width="25" height="25" rx="3"/><rect x="10" y="65" width="25" height="25" rx="3"/><rect x="42" y="42" width="16" height="16" rx="2"/><rect x="65" y="65" width="10" height="10" rx="1"/><rect x="80" y="65" width="10" height="10" rx="1"/><rect x="65" y="80" width="10" height="10" rx="1"/><rect x="80" y="80" width="10" height="10" rx="1"/></svg>
+<span>Scan QR code to open in Expo Go</span>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p>APP_NAME_PLACEHOLDER - Fast &amp; reliable goods transport in Indore</p>
+</div>
+</footer>
+
+<script>
+(function(){
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('animate-in')}})},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.feature-card,.section-title,.section-sub,.qr-card,.qr-text').forEach(function(el){observer.observe(el)});
+var header=document.querySelector('header');
+window.addEventListener('scroll',function(){if(window.scrollY>50){header.classList.add('scrolled')}else{header.classList.remove('scrolled')}},{passive:true});
+})();
+</script>
+</body>
+</html>
